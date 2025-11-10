@@ -24,3 +24,34 @@ Metrics: **Accuracy, Precision, Recall, F1, ROC-AUC, PR-AUC**.
 ---
 
 ## 2. Repo Structure
+
+> Screenshots/figures you paste in the report are saved under `artifacts_legal_similarity/figs/`.
+
+---
+
+## 3. Dataset
+- Kaggle: **Legal Clause Dataset** by *Bahushruth*  
+  https://www.kaggle.com/datasets/bahushruth/legalclausedataset
+
+The notebook uses **`kagglehub`** to download automatically in Colab.
+
+---
+
+## 4. Quick Start (Colab)
+
+Open the notebook in Colab and run cells in order. Minimal snippet:
+
+```python
+!pip install kagglehub --quiet
+import kagglehub, os, pandas as pd
+
+DATA_DIR = kagglehub.dataset_download("bahushruth/legalclausedataset")
+print("Dataset at:", DATA_DIR)
+
+# ...then follow cells to:
+# - load & clean all CSVs
+# - build balanced pairs (same category = positive, different = negative)
+# - tokenize & pad (vocab=20k, maxlen=120)
+# - stratified train/val split
+# - train Model A & Model B
+# - evaluate + save plots
